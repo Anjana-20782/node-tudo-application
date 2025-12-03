@@ -1,14 +1,7 @@
-const addBtn = document.getElementById('addBtn');
-const todoInput = document.getElementById('todo-input');
+const display = document.getElementById('display');
 
-addBtn.addEventListener('click', () => {
-    const text = todoInput.value;
+function addTodo()
+{
     
-
-    if(text === '') {
-        alert('Please enter a todo item');
-        return;
-    }
-    console.log(text);
-})
-    
+}
+  
