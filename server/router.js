@@ -27,6 +27,13 @@ module.exports = (req,res)=>{
       }
 
       //api routes
+
+      else if(req.method === "GET" && req.url === "/api/todos"){
+        getTodo(req,res)
+      }
+      else if(req.method === "POST" && req.url === "/api/todos"){
+        addTodo(req,res)
+      }
      
       else{
         res.writeHead(404);
