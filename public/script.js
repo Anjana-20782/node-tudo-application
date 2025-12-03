@@ -3,7 +3,7 @@ const todoInput = document.getElementById('todo-input');
 
 addBtn.addEventListener('click', () => {
     const text = todoInput.value;
-    let 
+    
 
     if(text === '') {
         alert('Please enter a todo item');
