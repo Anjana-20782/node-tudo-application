@@ -48,3 +48,20 @@ button{
     border-radius: 4px;
     font-size: 15px;
 }
+
+.details{
+
+    display: flex;
+    justify-content: space-evenly;
+}
+
+#delete{
+
+     background: red;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 15px; 
+    width: 90px;
+    height: 40px;
+}

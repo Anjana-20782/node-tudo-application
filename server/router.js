@@ -1,6 +1,6 @@
 const path = require('path')
 const fs = require('fs')
-const { getTodo, addTodo } = require('./controllers')
+const { getTodo, addTodo,deleteTodo } = require('./controllers')
 
 module.exports = (req, res) => {
 
@@ -30,6 +30,10 @@ module.exports = (req, res) => {
 
     else if (req.method === "POST" && req.url === "/api/todos") {
         addTodo(req, res);
+    }
+    else if(req.method === "DELETE" && req.url.startsWith("/api/todos")){
+      const id = req.url.split("/")[3];
+      deleteTodo(req,res,id)
     }
 
     else {

@@ -7,7 +7,10 @@ function fetchTodos() {
             list.innerHTML = "";
             data.forEach(todo => {
                 list.innerHTML += `
+                <div class="details">
                     <p>${todo.task}</p>
+                    <button id="delete" onclick="deleteTodo(${todo.id})">Delete</button>
+                </div>
                 `;
             });
         });
@@ -31,3 +34,19 @@ function addTodo() {
 }
 
 fetchTodos();
+
+
+function deleteTodo(id){
+
+    const yes=confirm("Are you sure you want to delete the task?")
+
+    if(!yes)
+    {
+        return;
+    }
+    
+    fetch("/api/todos/" + id, {
+        method:"DELETE"
+    })
+    .then(()=>fetchTodos());
+}
