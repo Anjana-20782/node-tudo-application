@@ -8,6 +8,8 @@ function fetchTodos() {
             data.forEach(todo => {
                 list.innerHTML += `
                 <div class="details">
+
+               
                      <input type="checkbox" id="cb-${todo.id}" ${todo.completed ? 'checked' : ''} onclick="toggleTodo(${todo.id}, this.checked)">
                       <span class="${todo.completed ? 'completed' : ''}">${todo.task}</span>
                     </div>
