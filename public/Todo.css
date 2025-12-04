@@ -65,8 +65,8 @@ button{
     width: 90px;
     height: 40px;
 }
-
 .details .completed {
-    text-decoration: line-through;
-    color: gray;
+  text-decoration: line-through !important;
+  color: #9a9a9a;
+  opacity: 0.95;
 }
