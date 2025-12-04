@@ -67,7 +67,7 @@ function updateTodo(req, res, id) {
     let body = "";
     req.on("data", chunk => body += chunk.toString());
     req.on("end", () => {
-        const data = JSON.parse(body); // expect { completed: true/false } (can also accept task edits)
+        const data = JSON.parse(body); 
         const todos = readTodos();
         const idx = todos.findIndex(t => String(t.id) === String(id));
         if (idx === -1) {
