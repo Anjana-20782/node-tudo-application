@@ -62,8 +62,33 @@ function deleteTodo(req, res, id) {
     res.end("Deleted");
 }
 
+
+function updateTodo(req, res, id) {
+    let body = "";
+    req.on("data", chunk => body += chunk.toString());
+    req.on("end", () => {
+        const data = JSON.parse(body); // expect { completed: true/false } (can also accept task edits)
+        const todos = readTodos();
+        const idx = todos.findIndex(t => String(t.id) === String(id));
+        if (idx === -1) {
+            res.writeHead(404, { "Content-Type": "text/plain" });
+            return res.end("Not found");
+        }
+
+        // update only provided fields
+        if (typeof data.completed !== "undefined") todos[idx].completed = !!data.completed;
+        if (typeof data.task !== "undefined") todos[idx].task = data.task;
+
+        saveTodos(todos);
+
+        res.writeHead(200, { "Content-Type": "application/json" });
+        res.end(JSON.stringify(todos[idx]));
+    });
+}
+
 module.exports = {
     getTodo,
     addTodo,
-    deleteTodo
+    deleteTodo,
+    updateTodo
 };
