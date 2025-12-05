@@ -2,7 +2,7 @@
   {
     "id": 1764832409634,
     "task": "task1",
-    "completed": false
+    "completed": true
   },
   {
     "id": 1764832419734,
@@ -17,7 +17,7 @@
   {
     "id": 1764832477082,
     "task": "task4",
-    "completed": false
+    "completed": true
   },
   {
     "id": 1764832480799,
