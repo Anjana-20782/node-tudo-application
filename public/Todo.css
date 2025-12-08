@@ -43,31 +43,31 @@ button{
 }
 
 
-#display {
+.todo-row {
   display: grid;
-  grid-template-columns: 1fr 120px; 
-  row-gap: 14px;
-  column-gap: 16px;
+  grid-template-columns: 1fr 120px;
   align-items: center;
-  width: 100%;
-  box-sizing: border-box;
+  background: #fafafa;
+  padding: 12px 14px;
+  border-radius: 8px;
+  box-shadow: 0 0 0 1px rgba(0,0,0,0.03) inset;
 }
 
+#display {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  width: 100%;
+}
 
 .details {
   display: flex;
   align-items: center;
   gap: 12px;
-  padding: 12px 14px;
-  border-radius: 8px;
-  background: #fafafa;
-  box-shadow: 0 0 0 1px rgba(0,0,0,0.01) inset;
 }
 
 .details span {
-  flex: 1 1 auto;
-  min-width: 0;
-  text-align: left;
+  flex: 1;
   font-size: 16px;
   color: #444;
 }
@@ -79,7 +79,6 @@ button{
   cursor: pointer;
 }
 
-#delete,
 .delete-btn {
   justify-self: end;   
   align-self: center;
