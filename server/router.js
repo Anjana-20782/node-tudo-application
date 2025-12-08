@@ -54,7 +54,7 @@ const fs = require("fs");
 const { getTodo, addTodo, deleteTodo, updateTodo } = require("./controllers");
 
 function render(res, filename, type = "text/html") {
-    const filePath = path.join(__dirname, "public", filename);
+    const filePath = path.join(__dirname, "../public", filename);
 
     fs.readFile(filePath, (err, data) => {
         if (err) {
@@ -74,7 +74,6 @@ module.exports = (req, res) => {
     if (url === "/script.js") return render(res, "script.js", "text/javascript");
 
     if (method === "GET" && url === "/api/todos") return getTodo(req, res);
-
     if (method === "POST" && url === "/api/todos") return addTodo(req, res);
 
     if (method === "DELETE" && url.startsWith("/api/todos/")) {
