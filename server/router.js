@@ -53,15 +53,15 @@ const path = require("path");
 const fs = require("fs");
 const { getTodo, addTodo, deleteTodo, updateTodo } = require("./controllers");
 
-function render(res, filename, contentType = "text/html") {
-    const filePath = path.join(__dirname, "../public", filename);
+function render(res, filename, type = "text/html") {
+    const filePath = path.join(__dirname, "public", filename);
 
     fs.readFile(filePath, (err, data) => {
         if (err) {
             res.writeHead(500);
             return res.end("Server Error");
         }
-        res.writeHead(200, { "Content-Type": contentType });
+        res.writeHead(200, { "Content-Type": type });
         res.end(data);
     });
 }
@@ -73,7 +73,6 @@ module.exports = (req, res) => {
     if (url === "/Todo.css") return render(res, "Todo.css", "text/css");
     if (url === "/script.js") return render(res, "script.js", "text/javascript");
 
-    // API ROUTES
     if (method === "GET" && url === "/api/todos") return getTodo(req, res);
 
     if (method === "POST" && url === "/api/todos") return addTodo(req, res);
@@ -88,6 +87,6 @@ module.exports = (req, res) => {
         return updateTodo(req, res, id);
     }
 
-    res.writeHead(404, { "Content-Type": "text/plain" });
+    res.writeHead(404);
     res.end("Not Found");
 };

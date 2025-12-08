@@ -154,9 +154,4 @@ function updateTodo(req, res, id) {
     });
 }
 
-module.exports = {
-    getTodo,
-    addTodo,
-    deleteTodo,
-    updateTodo
-};
+module.exports = { getTodo, addTodo, deleteTodo, updateTodo };
