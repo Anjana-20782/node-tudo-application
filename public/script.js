@@ -82,19 +82,26 @@ function fetchTodos() {
     fetch("/api/todos")
         .then(res => res.json())
         .then(data => {
-            list.innerHTML = "";
+            list.innerHTML = ""; 
+
             data.forEach(todo => {
                 list.innerHTML += `
-                <div class="details">
-                    <input type="checkbox" 
-                           ${todo.completed ? "checked" : ""} 
-                           onclick="toggleTodo('${todo._id}', this.checked)">
+                <div class="todo-row">
 
-                    <span class="${todo.completed ? 'completed' : ''}">
-                        ${todo.task}
-                    </span>
+                    <div class="details">
+                        <input type="checkbox" 
+                               ${todo.completed ? "checked" : ""} 
+                               onclick="toggleTodo('${todo._id}', this.checked)">
+    
+                        <span class="${todo.completed ? 'completed' : ''}">
+                            ${todo.task}
+                        </span>
+                    </div>
 
-                    <button onclick="deleteTodo('${todo._id}')">Delete</button>
+                    <button class="delete-btn" onclick="deleteTodo('${todo._id}')">
+                        Delete
+                    </button>
+
                 </div>
                 `;
             });
@@ -129,8 +136,7 @@ function addTodo() {
 }
 
 function deleteTodo(id) {
-    const yes = confirm("Are you sure you want to delete the task?");
-    if (!yes) return;
+    if (!confirm("Delete this task?")) return;
 
     fetch("/api/todos/" + id, {
         method: "DELETE"
@@ -138,4 +144,5 @@ function deleteTodo(id) {
     .then(() => fetchTodos());
 }
 
+// Load todos when page opens
 fetchTodos();
